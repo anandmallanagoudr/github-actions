@@ -1,13 +1,26 @@
-name: Hello World
+name: CI Pipeline
+
 on:
-   push:
-     branch:
+  push:
+    branches:
       - main
+
 jobs:
-  First-Hallow-World-Job:
-    runs-on: ubuntu:latest
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: checkout code
-        user: action/checkout@v3
-      - name: Print message
-        run: echo "hello-world"
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
