@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  first-hello-wld-job
+  first-hello-wld-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
